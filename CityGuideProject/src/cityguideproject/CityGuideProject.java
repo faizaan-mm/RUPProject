@@ -16,6 +16,7 @@ public class CityGuideProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        login.open_window();
     }
     
 }
