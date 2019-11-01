@@ -128,7 +128,6 @@
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="text" type="java.lang.String" value="ATMs, Medical Stores, Emergencies"/>
-        <Property name="actionCommand" type="java.lang.String" value="ATMs, Medical Stores, Emergencies"/>
       </Properties>
     </Component>
   </SubComponents>
