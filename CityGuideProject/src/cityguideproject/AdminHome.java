@@ -36,6 +36,8 @@ public class AdminHome extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,20 @@ public class AdminHome extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Transport Status");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Update Status for Accomodation");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,6 +118,10 @@ public class AdminHome extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jButton5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -117,9 +137,9 @@ public class AdminHome extends javax.swing.JFrame {
                         .addGap(166, 166, 166)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jButton8)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGap(140, 140, 140)
+                        .addComponent(jButton7)))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +161,12 @@ public class AdminHome extends javax.swing.JFrame {
                         .addComponent(jButton5))
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,6 +204,16 @@ public class AdminHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         Admin_ManageJobs.open_window();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        TransportStatus.open_window();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        new Admin_AccomodationStatus().setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,10 +253,12 @@ public class AdminHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
