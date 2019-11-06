@@ -15,6 +15,7 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    public static int user;
     Connection connect = null;
     public login() {
         initComponents();
@@ -127,6 +128,7 @@ public class login extends javax.swing.JFrame {
         {
             count++;
             role = rs.getInt("role");
+            user = rs.getInt("id");
         }
         if(count==1)
         {
