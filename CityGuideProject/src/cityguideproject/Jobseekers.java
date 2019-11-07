@@ -42,19 +42,28 @@ public class Jobseekers extends javax.swing.JFrame {
         jLabel1.setText("Jobseeker Home");
 
         jButton1.setText("Find Job");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Find Accomodation");
 
         jButton3.setText("Emergency Contacts");
 
         jButton4.setText("Application Status");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Recreaton");
 
         jButton6.setText("Local Transport");
 
         jButton7.setText("ATMs, Medical Stores, Emergencies");
-        jButton7.setActionCommand("ATMs, Medical Stores, Emergencies");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +118,16 @@ public class Jobseekers extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Jobseeker_Status.open_window();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JobSeeker_FinJob.open_window();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
