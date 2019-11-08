@@ -132,6 +132,8 @@ public class Admin_ManageCity extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Admin_AddLocation.open_window();
+        fillCombo();
+        updateTable();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -145,6 +147,8 @@ public class Admin_ManageCity extends javax.swing.JFrame {
             pst.close();
             updateTable();
             JOptionPane.showMessageDialog(null, "Deleted successfully");
+            fillCombo();
+            updateTable();
         }
         catch(Exception e)
         {

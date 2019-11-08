@@ -134,6 +134,8 @@ public class Admin_ManageTransport extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Admin_AddTransport.open_window();
+        fillCombo();
+        updateTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -146,6 +148,8 @@ public class Admin_ManageTransport extends javax.swing.JFrame {
             pst.close();
             updateTable();
             JOptionPane.showMessageDialog(null, "Deleted successfully");
+            fillCombo();
+            updateTable();
         }
         catch(Exception e)
         {

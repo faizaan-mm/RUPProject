@@ -127,6 +127,8 @@ public class Admin_ManageUser extends javax.swing.JFrame {
         pst.execute();
         pst.close();
         JOptionPane.showMessageDialog(null, "Deleted successfully");
+        fillCombo();
+        updateTable();
         }
         catch(Exception e)
         {

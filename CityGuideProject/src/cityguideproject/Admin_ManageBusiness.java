@@ -137,6 +137,8 @@ public class Admin_ManageBusiness extends javax.swing.JFrame {
             pst.close();
             updateTable();
             JOptionPane.showMessageDialog(null, "Deleted successfully");
+            fillCombo();
+            updateTable();
         }
         catch(Exception e)
         {

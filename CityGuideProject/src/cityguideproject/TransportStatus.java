@@ -20,6 +20,8 @@ public class TransportStatus extends javax.swing.JFrame {
     /**
      * Creates new form TransportStatus
      */
+    int uid = 0;
+    int tid = 0;
     Connection connect = null;
     public TransportStatus() {
         initComponents();
@@ -49,7 +51,7 @@ public class TransportStatus extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Transport Status");
+        jLabel1.setText("Transport Booking Requests");
 
         jLabel2.setText("Booking Id");
 
@@ -94,7 +96,7 @@ public class TransportStatus extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel2)
@@ -107,15 +109,15 @@ public class TransportStatus extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(228, 228, 228)
                 .addComponent(jLabel1)
-                .addGap(152, 152, 152))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +128,7 @@ public class TransportStatus extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,18 +136,54 @@ public class TransportStatus extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int id = Integer.valueOf(users.getSelectedItem().toString());
+        String email = "";
+                    String name1 = "";
+                    String name = "";
+                    String website = "";
         try{
             String query = "update transportbook set status = ? where id = ?";
+            String query2 = "update transport set capacity = (select capacity from transport where id=?)-1 where id=?";
             PreparedStatement pst = connect.prepareStatement(query);
             pst.setInt(2,id);
             pst.setString(1, "Confirmed");
             pst.execute();
+            pst = connect.prepareStatement(query2);
+            pst.setInt(2,id);
+            pst.setInt(1,id);
+            pst.execute();
             pst.close();
             JOptionPane.showMessageDialog(null, "Confirmed");
+            String s2 ="select uid,tid from transportbook where id=?";
+                                        PreparedStatement ps = connect.prepareStatement(s2);
+                                        ps.setInt(1,id);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        uid = rs.getInt("uid");
+                                        tid = rs.getInt("tid");
+                                        }
+            String s1 = "select name,email_id from user where id=?";
+                           ps = connect.prepareStatement(s1);
+					ps.setInt(1,uid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        s1 = "select provider_name,start from transport where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,tid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        name = rs.getString("provider_name");
+                                        website = rs.getString("start");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Transport with "+name+" from "+website+" has been confirmed. Please contact the driver for more details.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Confirmation of your Transport Booking";
+                                        SendMail.mail(email, subject, message);
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e );
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -156,6 +194,10 @@ public class TransportStatus extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int id = Integer.valueOf(users.getSelectedItem().toString());
+        String email = "";
+                    String name1 = "";
+                    String name = "";
+                    String website = "";
         try{
             String query = "update transportbook set status = ? where id = ?";
             PreparedStatement pst = connect.prepareStatement(query);
@@ -164,6 +206,33 @@ public class TransportStatus extends javax.swing.JFrame {
             pst.execute();
             pst.close();
             JOptionPane.showMessageDialog(null, "Rejected");
+            String s2 ="select uid,tid from transportbook where id=?";
+                                       PreparedStatement ps = connect.prepareStatement(s2);
+                                        ps.setInt(1,tid);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        uid = rs.getInt("uid");
+                                        tid = rs.getInt("tid");
+                                        }
+            String s1 = "select name,email_id from user where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,uid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        s1 = "select provider_name,start from transport where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,tid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        name = rs.getString("provider_name");
+                                        website = rs.getString("start");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Transport with "+name+" from "+website+" has been declined. Please book a different transport service.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Declination of your Transport Booking";
+                                        SendMail.mail(email, subject, message);
         }
         catch(Exception e)
         {
@@ -222,7 +291,7 @@ public class TransportStatus extends javax.swing.JFrame {
     }
     private void updateTable(){
         try{
-            String query = " select * from transportbook ";
+            String query = " select transportbook.id,name as Name,transport.id as TransportID,provider_name as Provider,type as Type,transportbook.capacity as Requested_Capacity,transport.capacity as Available_Capacity,status from transportbook,transport,user where tid=transport.id and uid=user.id ";
             PreparedStatement pst = connect.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             users_table.setModel(DbUtils.resultSetToTableModel(rs));

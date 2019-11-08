@@ -38,6 +38,8 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         address = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        capacity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,8 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Capacity");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,12 +75,14 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(name)
                             .addComponent(description)
-                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(address, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(capacity)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jButton1)))
@@ -99,7 +105,11 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(capacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20))
         );
@@ -112,15 +122,17 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
         String name1= name.getText();
         String desc1= description.getText();
         String location1= address.getText();
+        String capacity1 = capacity.getText();
         try{
-            String query = " insert into public_spaces(name,address,description,category) "
-            + " values (?, ?, ?, ?)";
+            String query = " insert into public_spaces(name,address,description,category,capacity) "
+            + " values (?, ?, ?, ?, ?)";
             int count =0;
             PreparedStatement pst = connect.prepareStatement(query);
             pst.setString(1,name1);
             pst.setString(2,location1);
             pst.setString(3,desc1);
             pst.setString(4,"accomodation");
+            pst.setString(5,capacity1);
             if(count==0){
                 pst.execute();}
             count++;
@@ -171,11 +183,13 @@ public class Admin_AddAccomodation extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
+    private javax.swing.JTextField capacity;
     private javax.swing.JTextField description;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField name;
     // End of variables declaration//GEN-END:variables

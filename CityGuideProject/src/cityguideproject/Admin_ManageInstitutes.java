@@ -141,6 +141,8 @@ public class Admin_ManageInstitutes extends javax.swing.JFrame {
             pst.close();
             updateTable();
             JOptionPane.showMessageDialog(null, "Deleted successfully");
+            fillCombo();
+            updateTable();
         }
         catch(Exception e)
         {
@@ -155,6 +157,8 @@ public class Admin_ManageInstitutes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Admin_AddInstitute.open_window();
+        fillCombo();
+        updateTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

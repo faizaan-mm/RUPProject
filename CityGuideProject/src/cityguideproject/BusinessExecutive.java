@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package cityguideproject;
-
+import java.io.*;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 /**
  *
  * @author felixfaker
@@ -31,9 +34,11 @@ public class BusinessExecutive extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +52,7 @@ public class BusinessExecutive extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("View Business");
+        jButton2.setText("View Businesses");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -55,8 +60,11 @@ public class BusinessExecutive extends javax.swing.JFrame {
         });
 
         jButton3.setText("Market Information");
-
-        jButton4.setText("History of City");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Create Jobs");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +80,27 @@ public class BusinessExecutive extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Find Accomodation");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Recreation");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Local Transport");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,24 +108,30 @@ public class BusinessExecutive extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton4))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6))))
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel1)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGap(95, 95, 95)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton3)))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,12 +143,16 @@ public class BusinessExecutive extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton9)
+                    .addComponent(jButton8))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,12 +170,100 @@ public class BusinessExecutive extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Executive_ViewBusinesses.open_window();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         Exec_AddJobs.open_window();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here
+        String currencies="";
+        String commodities="";
+        String world_indices="";
+        try{
+        String prg = "import sys";
+        BufferedWriter out = new BufferedWriter(new FileWriter("spider.py"));
+        out.write(prg);
+        out.close();
+        Process p1 = Runtime.getRuntime().exec("python spider.py > currencies.txt");
+        Process p2 = Runtime.getRuntime().exec("python spider1.py > commodities.txt");
+        Process p3 = Runtime.getRuntime().exec("python spider2.py > world-indices.txt");
+        BufferedReader in = new BufferedReader(new InputStreamReader(p1.getInputStream()));
+        String ret = in.readLine();
+        in = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+        ret = in.readLine();
+        in = new BufferedReader(new InputStreamReader(p3.getInputStream()));
+        ret = in.readLine();
+        Thread.sleep(6000);
+        System.out.println("Done");
+        BufferedReader reader;
+        reader = new BufferedReader(new FileReader( System.getProperty("user.dir")+
+					"/src/cityguideproject/currencies.txt"));
+			String line = reader.readLine();
+			while (line != null) {
+				currencies+=line+"\n";
+				// read next line
+				line = reader.readLine();}
+        reader.close();
+        reader = new BufferedReader(new FileReader( System.getProperty("user.dir")+
+					"/src/cityguideproject/commodities.txt"));
+			line = reader.readLine();
+			while (line != null) {
+				commodities+=line+"\n";
+				// read next line
+				line = reader.readLine();}
+        reader.close();
+        reader = new BufferedReader(new FileReader( System.getProperty("user.dir")+
+					"/src/cityguideproject/world-indices.txt"));
+			line = reader.readLine();
+			while (line != null) {
+				world_indices+=line+"\n";
+				// read next line
+				line = reader.readLine();}
+        reader.close();
+        }                
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally{
+            JTextArea textArea = new JTextArea(20, 40);
+                textArea.setText(currencies);
+                textArea.setEditable(false);
+                JScrollPane scrollPane = new JScrollPane(textArea);
+                JOptionPane.showMessageDialog(null, scrollPane);
+                
+                JTextArea textArea1 = new JTextArea(20, 40);
+                textArea1.setText(commodities);
+                textArea1.setEditable(false);
+                JScrollPane scrollPane1 = new JScrollPane(textArea1);
+                JOptionPane.showMessageDialog(null, scrollPane1);
+                
+                JTextArea textArea2 = new JTextArea(20,40);
+                textArea2.setText(world_indices);
+                textArea2.setEditable(false);
+                JScrollPane scrollPane2 = new JScrollPane(textArea2);
+                JOptionPane.showMessageDialog(null, scrollPane2);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new BookHotel().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        Recreation.open_window();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        LocalTransport.open_window();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,9 +304,11 @@ public class BusinessExecutive extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
