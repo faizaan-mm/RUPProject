@@ -45,7 +45,7 @@ public class Exec_AddJobs extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         requirements = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Create Jobs");
@@ -107,7 +107,7 @@ public class Exec_AddJobs extends javax.swing.JFrame {
                         .addGap(110, 110, 110)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
+                        .addGap(147, 147, 147)
                         .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -136,9 +136,9 @@ public class Exec_AddJobs extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(requirements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(19, 19, 19)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
 
         pack();

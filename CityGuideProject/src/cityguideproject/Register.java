@@ -158,6 +158,7 @@ public class Register extends javax.swing.JFrame {
         String name1 = name.getText();
         String phoneno = phone.getText();
         String emailid = email.getText();
+        if(phoneno.length()==10 && emailid.contains("@") && emailid.contains(".")){
         if(role1.equals("Student"))
             role2 = 3;
         else if(role1.equals("Tourist"))
@@ -200,6 +201,10 @@ public class Register extends javax.swing.JFrame {
                 login.open_window();
             else if(role2==5)
                 login.open_window();
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invalid Details");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
