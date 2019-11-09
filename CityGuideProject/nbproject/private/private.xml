@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Admin_AddAccomodation.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Exec_AddBusiness.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Exec_AddJobs.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Admin_AddTransport.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/BookHotel.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Register.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Admin_AddInstitute.java</file>
+            <file>file:/home/felixfaker/Git/RUPProject/CityGuideProject/src/cityguideproject/Admin_AddLocation.java</file>
+        </group>
     </open-files>
 </project-private>

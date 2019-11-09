@@ -1,0 +1,64 @@
+                               Names    Prices   ...    Open Interest   Volume
+0                        Gold Dec 19  1,459.80   ...          445,056  428,918
+1                      Silver Dec 19     16.76   ...          144,406  127,059
+2                      Copper Dec 19    2.6885   ...          120,976   70,467
+3                   Crude Oil Dec 19     57.44   ...          352,155  589,272
+4    Brent Crude Oil Last Day Financ     62.63   ...           33,139   33,536
+5                 Natural Gas Dec 19    2.7890   ...          243,443  158,046
+6                        Corn Dec 19    376.50   ...          621,743  316,923
+7                        Oats Mar 20    300.00   ...            2,459      275
+8    KC HRW Wheat Futures,Dec-2019,C    421.50   ...          140,192   47,654
+9                  Rough Rice Mar 20     12.25   ...            8,289      269
+10                   Soybeans Jan 20    930.75   ...          320,795  124,898
+11              Feeder Cattle Jan 20   146.275   ...           21,397    3,947
+12                  Lean Hogs Dec 19     64.10   ...           86,134   26,088
+13                Live Cattle Dec 19    119.30   ...          126,176   29,563
+14                      Cocoa Dec 19  2,496.00   ...          115,952   32,610
+15                     Coffee Dec 19    108.80   ...           79,590   38,484
+16                     Cotton Dec 19     64.51   ...           90,942   35,657
+17                     Lumber Nov 19    393.90   ...            2,341      270
+18               Orange Juice Nov 19     96.95   ...           13,825      353
+19                  Sugar #11 Mar 20     12.55   ...          532,850   71,897
+20                       Gold Dec 19  1,459.80   ...          445,056  428,918
+21                     Silver Dec 19     16.76   ...          144,406  127,059
+22                     Copper Dec 19    2.6885   ...          120,976   70,467
+23                  Crude Oil Dec 19     57.44   ...          352,155  589,272
+24   Brent Crude Oil Last Day Financ     62.63   ...           33,139   33,536
+25                Natural Gas Dec 19    2.7890   ...          243,443  158,046
+26                       Corn Dec 19    376.50   ...          621,743  316,923
+27                       Oats Mar 20    300.00   ...            2,459      275
+28   KC HRW Wheat Futures,Dec-2019,C    421.50   ...          140,192   47,654
+29                 Rough Rice Mar 20     12.25   ...            8,289      269
+..                               ...       ...   ...              ...      ...
+490                  Soybeans Jan 20    930.75   ...          320,795  124,898
+491             Feeder Cattle Jan 20   146.275   ...           21,397    3,947
+492                 Lean Hogs Dec 19     64.10   ...           86,134   26,088
+493               Live Cattle Dec 19    119.30   ...          126,176   29,563
+494                     Cocoa Dec 19  2,496.00   ...          115,952   32,610
+495                    Coffee Dec 19    108.80   ...           79,590   38,484
+496                    Cotton Dec 19     64.51   ...           90,942   35,657
+497                    Lumber Nov 19    393.90   ...            2,341      270
+498              Orange Juice Nov 19     96.95   ...           13,825      353
+499                 Sugar #11 Mar 20     12.55   ...          532,850   71,897
+500                      Gold Dec 19  1,459.80   ...          445,056  428,918
+501                    Silver Dec 19     16.76   ...          144,406  127,059
+502                    Copper Dec 19    2.6885   ...          120,976   70,467
+503                 Crude Oil Dec 19     57.44   ...          352,155  589,272
+504  Brent Crude Oil Last Day Financ     62.63   ...           33,139   33,536
+505               Natural Gas Dec 19    2.7890   ...          243,443  158,046
+506                      Corn Dec 19    376.50   ...          621,743  316,923
+507                      Oats Mar 20    300.00   ...            2,459      275
+508  KC HRW Wheat Futures,Dec-2019,C    421.50   ...          140,192   47,654
+509                Rough Rice Mar 20     12.25   ...            8,289      269
+510                  Soybeans Jan 20    930.75   ...          320,795  124,898
+511             Feeder Cattle Jan 20   146.275   ...           21,397    3,947
+512                 Lean Hogs Dec 19     64.10   ...           86,134   26,088
+513               Live Cattle Dec 19    119.30   ...          126,176   29,563
+514                     Cocoa Dec 19  2,496.00   ...          115,952   32,610
+515                    Coffee Dec 19    108.80   ...           79,590   38,484
+516                    Cotton Dec 19     64.51   ...           90,942   35,657
+517                    Lumber Nov 19    393.90   ...            2,341      270
+518              Orange Juice Nov 19     96.95   ...           13,825      353
+519                 Sugar #11 Mar 20     12.55   ...          532,850   71,897
+
+[520 rows x 7 columns]

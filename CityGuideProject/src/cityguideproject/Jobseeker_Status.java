@@ -135,7 +135,7 @@ public class Jobseeker_Status extends javax.swing.JFrame {
     }
     private void updateTable(){
         try{
-            String query = " select * from applicants where uid = ?";
+            String query = " select jid as JobID,role as Role,businesses.name as Company, salary as Salary,requirements as Requirements, status as Status,contact as Contact,website as Website from applicants,jobs,businesses where job_id=jid and jobs.b_id=businesses.b_id and uid = ?";
             PreparedStatement pst = connect.prepareStatement(query);
             pst.setInt(1, login.user);
             ResultSet rs = pst.executeQuery();

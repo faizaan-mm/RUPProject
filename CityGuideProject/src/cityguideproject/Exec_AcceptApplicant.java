@@ -22,6 +22,10 @@ public class Exec_AcceptApplicant extends javax.swing.JFrame {
     /**
      * Creates new form Exec_AcceptApplicant
      */
+    String email = "";
+    String name1 = "";
+    String name = "";
+    String website = "";
     Connection connect = null;
     public Exec_AcceptApplicant() {
         initComponents();
@@ -232,6 +236,18 @@ public class Exec_AcceptApplicant extends javax.swing.JFrame {
             pst.setInt(1,id);
             pst.execute();
             pst.close();
+                                        String s1 = "select name,email_id from user where id=?";
+                                        PreparedStatement ps = connect.prepareStatement(s1);
+					ps.setInt(1,id);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Job application has been accepted. The Company will contact you soon with more details.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Job Application Accepted";
+                                        SendMail.mail(email, subject, message);
+
             JOptionPane.showMessageDialog(null, "Accepted");
         }
         catch(Exception e)
@@ -249,6 +265,17 @@ public class Exec_AcceptApplicant extends javax.swing.JFrame {
             pst.setInt(1,id);
             pst.execute();
             pst.close();
+            String s1 = "select name,email_id from user where id=?";
+                                        PreparedStatement ps = connect.prepareStatement(s1);
+					ps.setInt(1,id);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Job application has been declined. Please feel free to apply for more jobs.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Job Application Declined";
+                                        SendMail.mail(email, subject, message);
             JOptionPane.showMessageDialog(null, "Rejected");
         }
         catch(Exception e)

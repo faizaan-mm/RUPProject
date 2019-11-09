@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -21,7 +22,10 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
      * Creates new form Admin_AccomodationStatus
      */
     Connection connect = null;
-        
+    String email = "";
+    String name1 = "";
+    String name = "";
+    String website = "";
     public Admin_AccomodationStatus() {
         connect=SQLiteJava.dbConnector();
         initComponents();
@@ -44,7 +48,7 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
     }
     private void updateTable(){
         try{
-            String query = " select * from AccomodationStatus ";
+            String query = " select hotelid, user.name as Name,public_spaces.name as Accomodation, capacity as Available_Capacity,status from AccomodationStatus,user,public_spaces where public_spaces.id=hotelid and Userid=user.id ";
             PreparedStatement pst = connect.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             users_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -68,6 +72,8 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +106,16 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setText("Accomodation Booking Requests");
+
+        jButton3.setText("Done");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,31 +123,40 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(users1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel2)))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(users1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jButton1)
+                .addGap(49, 49, 49)
+                .addComponent(jButton2)
+                .addGap(35, 35, 35)
+                .addComponent(jButton3)
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(users1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(48, 48, 48))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -141,11 +166,43 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
         // TODO add your handling code here:
         int hotelid=Integer.parseInt(users1.getSelectedItem().toString());
         String s="Update AccomodationStatus SET status=? where hotelid=?";
+        String s1 = "update public_spaces set capacity = (select capacity from public_spaces where id=?)-1 where id=?;";
 				try{
+                                        int uid = 0;
 					PreparedStatement ps = connect.prepareStatement(s);
                                         ps.setString(1,"Booking Confirmed");
 					ps.setInt(2,hotelid);
 					ps.executeUpdate();
+                                        ps = connect.prepareStatement(s1);
+                                        ps.setInt(1,hotelid);
+					ps.setInt(2,hotelid);
+					ps.executeUpdate();
+                                        JOptionPane.showMessageDialog(null, "Request Accepted");
+                                        String s2 ="select Userid from AccomodationStatus where hotelid=?";
+                                        ps = connect.prepareStatement(s2);
+                                        ps.setInt(1,hotelid);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        uid = rs.getInt("Userid");
+                                        }
+                                        s1 = "select name,email_id from user where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,uid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        s1 = "select name from public_spaces where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,hotelid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        name = rs.getString("name");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Accomodation Booking with "+name+" has been confirmed. Please check-in anytime after 12pm and make your payment at the reception.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Confirmation of your Accomodation Booking";
+                                        SendMail.mail(email, subject, message);
                                         dispose();
 				}
 				catch(SQLException se){
@@ -158,16 +215,48 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
         int hotelid=Integer.parseInt(users1.getSelectedItem().toString());
         String s="Update AccomodationStatus SET status=? where hotelid=?";
 				try{
+                                        int uid = 0;
 					PreparedStatement ps = connect.prepareStatement(s);
                                         ps.setString(1,"Request Rejected");
 					ps.setInt(2,hotelid);
 					ps.executeUpdate();
+                                        JOptionPane.showMessageDialog(null, "Request Rejected");
+                                        String s2 ="select Userid from AccomodationStatus where hotelid=?";
+                                        ps = connect.prepareStatement(s2);
+                                        ps.setInt(1,hotelid);
+                                        ResultSet rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        uid = rs.getInt("Userid");
+                                        }
+                                        String s1 = "select name,email_id from user where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,uid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        email = rs.getString("email_id");
+                                        name1 = rs.getString("name");
+                                        }
+                                        s1 = "select name from public_spaces where id=?";
+                                        ps = connect.prepareStatement(s1);
+					ps.setInt(1,hotelid);
+                                        rs = ps.executeQuery();
+                                        while(rs.next()){
+                                        name = rs.getString("name");
+                                        }
+                                        String message = "Dear "+name1+"\nYour Accomodation Booking with "+name+" has been declined. Please book a different Accomodation stay.\n\n \nRegards,\nCityGuideProject";
+                                        String subject = "Declination of your Accomodation Booking";
+                                        SendMail.mail(email, subject, message);
                                         dispose();
 				}
 				catch(SQLException se){
 					se.printStackTrace();
 				}
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +297,9 @@ public class Admin_AccomodationStatus extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> users1;
     private javax.swing.JTable users_table;
